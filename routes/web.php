@@ -1,5 +1,8 @@
 <?php
 
+use App\Book;
+use Illuminate\Http\Request;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,6 +22,11 @@ Route::get('/', function () {
 Route::group(['middleware' => ['web']], function() {
 
 	Route::get('/', function(){
+	    $books = Book::all();
+		return view('layouts.books', [
+		'books' => $books
+
+		]);
 	    
 	});
 	Route::post('/book', function(Request $request) {
